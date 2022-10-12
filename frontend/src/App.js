@@ -3,10 +3,23 @@ import './App.css';
 import Home from './components/home'
 import Test from './components/test';
 
+import { useState, useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 
 function App() {
+  const [test, setTest] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:3001/test')
+    .then((res) => res.json())
+    .then((data) => {
+      setTest(data)
+    })
+  }, [])
+
+
+   console.log(test)
   return (
     <div className="App">
       <Router>
