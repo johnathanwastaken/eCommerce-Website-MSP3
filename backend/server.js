@@ -9,6 +9,12 @@ app.use(cors())
 
 app.use(express.static(path.resolve(__dirname, '../client/build')))
 
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+app.use('/', require('./controllers/web_controller')) 
+
 //Handle GET requrests to /api route
 app.get('/api', (req, res) => {
     res.json({
