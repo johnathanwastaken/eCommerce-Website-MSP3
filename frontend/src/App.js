@@ -1,42 +1,26 @@
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom'
+import React from "react";
 import './App.css';
-import Home from './components/home'
+import Home from './components/home';
 import Test from './components/test';
-
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
+import Bar from './components/navbar';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <Router>
-        <header>
-          <h1 className="title">Hello! Welcome to the website</h1>
-          <Container>
-            <Nav defaultActiveKey="/" variant="tabs" fill>
-              <Nav.Item>
-                <Nav.Link href="/">
-                <Link to="/">Home</Link>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey={"newPage"}>
-                  <Link to="/test">Test</Link>
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Container>
-        </header>
-      
+        <Bar />
+        <Home />
+        <Test />
 
-        <div className="display">
+    <div className="display">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/test" element={<Test />} />
           </Routes>
-        </div>
-      </Router>
     </div>
+    </div>
+    </Router>
   );
 }
 
